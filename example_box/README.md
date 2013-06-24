@@ -1,4 +1,4 @@
-# Vagrant AGanetiWS Example Box
+# Vagrant GANETI Example Box
 
 Vagrant providers each require a custom provider-specific box format.
 This folder shows the example contents of a box for the `ganeti` provider.
