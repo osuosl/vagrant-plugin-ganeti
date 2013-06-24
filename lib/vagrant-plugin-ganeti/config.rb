@@ -63,8 +63,7 @@ module VagrantPlugins
 
         @version = nil if @version == UNSET_VALUE
 
-        end
-
+        
         # Mark that we finalized
         @__finalized = true
       end
