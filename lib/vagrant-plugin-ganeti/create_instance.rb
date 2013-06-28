@@ -4,40 +4,9 @@ require 'net/http'
 require 'net/https'
 require 'base64'
 require 'json'
-require 'log4r'
 
-module VagrantPlugins
-  module GANETI
-    module Action
-      # This action connects to Ganeti, verifies credentials start the instance.
-      class ConnectGANETI
-        def initialize(app, env)
-          @app    = app
-          @logger = Log4r::Logger.new("vagrant_ganeti::action::connect_ganeti")
-        end
-
-        def call(env)
-            config     = env[:machine].provider_config.get_config()
-
-            @logger.info("Connecting to GANETI...")
-            #Call  ganeti_client ruby wrapper
-	    #client = GanetiClient.new(config.host,config.username,config.password)
-	    client = GanetiClient.new("https://10.1.0.135:5080" ,"gsoc","v0fdYnVs")
-
-	    info = {
-	    '__version__'    => '1'    ,               'disk_template' => 'plain',
-	    'pnode'         => 'gtest2.osuosl.bak',      'instance_name' => 'gimager3.osuosl.bak',   
-	    'os_type'    => 'image+centos-6',
-	    'name'          => 'gimager3.osuosl.bak',         
-	    'disks' => [{'size' => 25600}],
-	    'nic'   => [{'ip' => '10.1.0.153'}]
-	     }
-            client.instance_create(info)
-
-	    @app.call(env)
-        end
-      end
-      class GanetiClient
+module Ganeticlient
+	class GanetiClient
 		attr_accessor :host, :username, :password, :version
 		
 		def initialize(host, username, password)
@@ -98,15 +67,15 @@ module VagrantPlugins
 
 		   http = Net::HTTP.new(uri.host, uri.port)
 		   http.use_ssl = true
-		   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+	           puts uri
+		   puts url
+	           puts body
 		   headers['User-Agent'] = 'Ruby Ganeti RAPI Client'
 		   headers['Content-Type'] = 'application/json'
 		   headers['Authorization']= authenticate(self.username, self.password)
-		  
+
 		   begin
-		       response = http.send_request(method, url, body, headers)
-		      # response = http.send_request("GET",url)
-		       puts response
+		        response = http.send_request(method, url, body.to_json, headers)
 		   rescue => e
 		        puts "Error sending request"
 		        puts e.message
@@ -140,6 +109,4 @@ module VagrantPlugins
 		    return response_body
 		end
 	end #Class GanetiClient
-      end #Action
-  end #ganeti
-end #VagrantPlugin
+end
