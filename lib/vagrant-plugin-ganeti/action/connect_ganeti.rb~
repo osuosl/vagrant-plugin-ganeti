@@ -35,17 +35,17 @@ module VagrantPlugins
 	    'pnode' => config.pnode
 	     }
 
-            # Launch!
-            env[:ui].info(I18n.t("vagrant_ganeti.launching_instance"))
-            env[:ui].info(" -- Username: #{username}")
-            env[:ui].info(" -- OS NAME: #{os_name}")
-            env[:ui].info(" -- Instance NAME: #{instance_name}")
-            env[:ui].info(" -- Host: #{host}")
-            env[:ui].info(" -- Primary Noode #{pnode}") 
-            env[:ui].info(" -- Disk Template: #{disk_template}")
-            env[:ui].info(" -- Disks #{disks}") 
-            env[:ui].info(" -- Network Configurations: #{nics}") 
-            env[:ui].info(" -- Version : #{version }") if version 
+          # Launch!
+          env[:ui].info(I18n.t("vagrant_ganeti.launching_instance"))
+          env[:ui].info(" -- Username: #{username}")
+          env[:ui].info(" -- OS NAME: #{os_name}")
+          env[:ui].info(" -- Instance NAME: #{instance_name}")
+          env[:ui].info(" -- Host: #{host}")
+          env[:ui].info(" -- Primary Noode #{pnode}") 
+          env[:ui].info(" -- Disk Template: #{disk_template}")
+          env[:ui].info(" -- Disks #{disks}") 
+          env[:ui].info(" -- Network Configurations: #{nics}") 
+          env[:ui].info(" -- Version : #{version }") if version 
 
 
             client.instance_create(info)

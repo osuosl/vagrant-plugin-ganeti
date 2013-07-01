@@ -23,17 +23,16 @@ module VagrantPlugins
       # @return [Fixnum]
       attr_accessor :instance_ready_timeout
 
-     
-      # The version of the GANETI api to use
-      #
-      # @return [String]
-      attr_accessor :version
-
 
       # The name of the OS to use.
       #
       # @return [String]
       attr_accessor :os_name
+     
+      # The version of the GANETI api to use
+      #
+      # @return [String]
+      attr_accessor :version
 
       # The name of the OS to use.
       #

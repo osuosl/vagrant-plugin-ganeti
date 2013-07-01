@@ -14,7 +14,6 @@ module VagrantPlugins
           env[:metrics] ||= {}
           env[:metrics]["provisioner_times"] ||= []
           env[:metrics]["provisioner_times"] << [name, timer]
-	  puts "Done Timed"
         end
       end
     end
