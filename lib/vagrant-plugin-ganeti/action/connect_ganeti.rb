@@ -37,23 +37,34 @@ module VagrantPlugins
 
             # Launch!
             env[:ui].info(I18n.t("vagrant_ganeti.launching_instance"))
-            env[:ui].info(" -- Username: #{username}")
-            env[:ui].info(" -- OS NAME: #{os_name}")
-            env[:ui].info(" -- Instance NAME: #{instance_name}")
-            env[:ui].info(" -- Host: #{host}")
-            env[:ui].info(" -- Primary Noode #{pnode}") 
-            env[:ui].info(" -- Disk Template: #{disk_template}")
-            env[:ui].info(" -- Disks #{disks}") 
-            env[:ui].info(" -- Network Configurations: #{nics}") 
-            env[:ui].info(" -- Version : #{version }") if version 
+            env[:ui].info(" -- Username: #{config.username}")
+            env[:ui].info(" -- OS NAME: #{config.os_name}")
+            env[:ui].info(" -- Instance NAME: #{config.instance_name}")
+            env[:ui].info(" -- Host: #{config.host}")
+            env[:ui].info(" -- Primary Noode #{config.pnode}") 
+            env[:ui].info(" -- Disk Template: #{config.disk_template}")
+            env[:ui].info(" -- Disks #{config.disks}") 
+            env[:ui].info(" -- Network Configurations: #{config.nics}") 
+            env[:ui].info(" -- Version : #{config.version }") if config.version 
 
 
-            client.instance_create(info)
-            client.start_instance(info)
-	    #do it after 100 seconds
-	    puts "This might take few minutes....."
-	    sleep(5)
-	    puts "Ready" if client.isready(info)
+            createjob = client.instance_create(info)
+	    puts createjob
+	    env[:ui].info( "This might take few minutes.....")
+	    while true
+		if  client.is_job_ready(createjob) == "error"
+			env[:ui].info("Error Creating instance")
+			break
+		elsif client.is_job_ready(createjob) == "running"
+			sleep(15)
+		elsif client.is_job_ready(createjob) == "success"
+	    		env[:ui].info( "VM sucessfully Created.Booting up the VM ")
+            		createjob = client.start_instance(info)
+			env[:machine].id = info['nics'][0]['ip']
+                        puts env[:machine].id
+			break
+		end
+            end
 	    @app.call(env)
         end
       end
@@ -79,12 +90,13 @@ module VagrantPlugins
 		    return response_body
 		end
 
-		def isready(info)
-		    url = get_url("instances/#{info['instance_name']}")
+
+		def is_job_ready(jobno)
+		    url = get_url("jobs/#{jobno}")
 		    puts url
 		    response_body = send_request("GET", url)
 		    
-		    return response_body["status"]== "running" ? true : false
+		    return response_body["status"]
 		end
 
 		def start_instance(info)

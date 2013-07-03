@@ -19,19 +19,10 @@ module VagrantPlugins
 
         def read_ssh_info(ganeti, machine)
           return nil if machine.id.nil?
-
-          # Find the machine
-          server = ganeti.servers.get(machine.id)
-          if server.nil?
-            # The machine can't be found
-            @logger.info("Machine couldn't be found, assuming it got destroyed.")
-            machine.id = nil
-            return nil
-          end
-
+          puts "Ganeti is #{machine.id}"
           # Read the DNS info
           return {
-            :host => server.dns_name || server.private_ip_address,
+            :host => machine.id,
             :port => 22
           }
         end

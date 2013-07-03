@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.provider :ganeti do |ganeti|
-    ganeti.os_name = "image-cirros"
+  config.vm.provider :aws do |aws|
+    aws.ami = "ami-7747d01e"
   end
 end
