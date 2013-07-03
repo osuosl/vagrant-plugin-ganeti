@@ -130,7 +130,6 @@ end
       autoload :ReadSSHInfo, action_root.join("read_ssh_info")
       autoload :SyncFolders, action_root.join("sync_folders")
       autoload :WarnNetworks, action_root.join("warn_networks")
-      autoload :RunInstance, action_root.join("run_instance")
       autoload :RemoveInstance, action_root.join("remove_instance")
     end
   end
