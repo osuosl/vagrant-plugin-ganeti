@@ -33,7 +33,6 @@ module VagrantPlugins
             @logger.info("Connecting to GANETI...")
             #Call  ganeti_client ruby wrapper
 	    client = VagrantPlugins::GANETI::Util::GanetiClient.new(config.host,config.username,config.password,info)
-	    #client = GanetiClient.new("https://10.1.0.135:5080" ,"gsoc","v0fdYnVs")
 	    env[:ganeti_compute] = client
 	    @app.call(env)
         end
