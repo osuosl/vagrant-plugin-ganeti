@@ -12,7 +12,7 @@ Build the Gem:
 
 
 
-Install using standard Vagrant 1.1+ plugin installation methods. After installing, vagrant up and specify the aws provider. An example is shown below.
+Install using standard Vagrant 1.1+ plugin installation methods. After installing, vagrant up and specify the ganeti provider. An example is shown below.
 
     $  vagrant plugin install vagrant-plugin-ganeti-0.0.1.gem
 
