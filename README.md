@@ -2,7 +2,8 @@
 This is a Vagrant 1.2+ plugin that adds an Ganeti provider to Vagrant, allowing Vagrant to control and provision 
 machines in Ganeti.
 
-NOTE: This plugin requires Vagrant 1.2+,
+NOTE: This plugin requires Vagrant 1.2
+NOTE: This project is work in progress, there are lot of things which might not work yet.
 
 ## Installation
 
@@ -56,6 +57,11 @@ This will start an  instance in the Ganeti Cluster. And assuming your SSH inform
 
 If you have issues with SSH connecting, make sure that the instances are being launched with a security group that allows SSH access.
 
+## TODO
+
+1. Add Rsync support
+2. Add Support for Iallocator 
+
 ## Contributing
 
 1. Fork it
@@ -63,3 +69,7 @@ If you have issues with SSH connecting, make sure that the instances are being l
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+ 
+## About the Project
+Author : Ahmed Shabib 
+This project is done as part of GSOC -2013 ,and is mentored by Lance Albertson(Ramereth) and Ken Lett
