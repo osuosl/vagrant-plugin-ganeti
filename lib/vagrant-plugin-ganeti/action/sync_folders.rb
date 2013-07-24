@@ -10,7 +10,7 @@ module VagrantPlugins
   module GANETI
     module Action
       # This middleware uses `rsync` to sync the folders over to the
-      # AWS instance.
+      # Ganeti instance.
       class SyncFolders
         include Vagrant::Util::ScopedHashOverride
 
@@ -25,7 +25,7 @@ module VagrantPlugins
           ssh_info = env[:machine].ssh_info
 
           env[:machine].config.vm.synced_folders.each do |id, data|
-            data = scoped_hash_override(data, :aws)
+            data = scoped_hash_override(data, :ganeti)
 
             # Ignore disabled shared folders
             next if data[:disabled]
