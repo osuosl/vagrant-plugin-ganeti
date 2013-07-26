@@ -26,10 +26,10 @@ module VagrantPlugins
 	    'disks' => config.disks ,
 	    'instance_name' => config.instance_name ,
 	    'mode' => config.mode ,        
-	    'nics'   => config.nics ,
-	    'pnode' => config.pnode 
+	    'nics'   => config.nics
 	     }
-
+	    info['pnode'] = config.pnode if not config.pnode.nil?
+            info['iallocator'] = config.iallocator if not config.iallocator.nil?
             @logger.info("Connecting to GANETI...")
             #Call  ganeti_client ruby wrapper
 	    client = VagrantPlugins::GANETI::Util::GanetiClient.new(config.host,config.username,config.password,info)
