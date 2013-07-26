@@ -65,6 +65,10 @@ module VagrantPlugins
       # @return [String]
       attr_accessor :pnode
 
+      # The name of the Primary Node
+      #
+      # @return [String]
+      attr_accessor :iallocator
 
       def initialize()
         @username    	= UNSET_VALUE
@@ -78,6 +82,7 @@ module VagrantPlugins
 	@mode		= UNSET_VALUE
 	@nics 		= UNSET_VALUE
 	@pnode 		= UNSET_VALUE
+	@iallocator 	= UNSET_VALUE
         @__finalized 	= false
       end
 
@@ -93,16 +98,16 @@ module VagrantPlugins
         @os_name = nil if @os_name == UNSET_VALUE
 
         # disk_template since we can't default that
-        @disk_template = nil if @disk_template == UNSET_VALUE
+        @disk_template = "plain" if @disk_template == UNSET_VALUE
 
         # disks must be nil, since we can't default that
-        @disks = nil if @disks == UNSET_VALUE
+        @disks = [{"size"=>"8000"}]  if @disks == UNSET_VALUE
 
         # instance_name must be nil, since we can't default that
         @instance_name = nil if @instance_name == UNSET_VALUE
 
         # mode must be nil, since we can't default that
-        @mode = nil if @mode == UNSET_VALUE
+        @mode = "create" if @mode == UNSET_VALUE
 
         # nics must be nil, since we can't default that
         @nics = nil if @nics == UNSET_VALUE
@@ -110,7 +115,10 @@ module VagrantPlugins
         # pnode must be nil, since we can't default that
         @pnode = nil if @pnode == UNSET_VALUE
 
-        # Set the default timeout for waiting for an instance to be ready
+        # pnode must be nil, since we can't default that
+        @iallocator = nil if @iallocator == UNSET_VALUE
+        
+	# Set the default timeout for waiting for an instance to be ready
         @instance_ready_timeout = 120 if @instance_ready_timeout == UNSET_VALUE
 
         @version = nil if @version == UNSET_VALUE
@@ -129,11 +137,11 @@ module VagrantPlugins
 	errors << I18n.t("vagrant_ganeti.config.host_required") if @host.nil?
 	errors << I18n.t("vagrant_ganeti.config.os_name_required") if @os_name.nil?
 	errors << I18n.t("vagrant_ganeti.config.disk_template_required") if @disk_template.nil?
-        errors << I18n.t("vagrant_ganeti.config.disks_required") if @disks.nil?
+        errors << I18n.t("vagrant_ganeti.config.disks_required") if @disks == nil
 	errors << I18n.t("vagrant_ganeti.config.instance_name_required") if @instance_name.nil?
         errors << I18n.t("vagrant_ganeti.config.mode_required") if @mode.nil?
 	errors << I18n.t("vagrant_ganeti.config.nics_required") if @nics.nil?
-	errors << I18n.t("vagrant_ganeti.config.pnode_required") if @pnode.nil?
+	errors << I18n.t("vagrant_ganeti.config.pnode_required") if @pnode.nil? and  @iallocator.nil?
    	{ "GANETI Provider" => errors }
 
       end
