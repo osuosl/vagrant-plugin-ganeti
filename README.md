@@ -80,7 +80,7 @@ This provider exposes quite a few provider-specific configuration options:
 * `instance_name` - The name of the instance. REQUIRED
 * `pnode` - The primary node where instance needs to be created. 
 * `nics` - Network configuration. REQUIRED
-* `disks` - The Size of the Disks . Defaults to 10 G . OPTIONAL
+* `disks` - The Size of the Disks . Defaults to 8 G . OPTIONAL
 * `disk_template` - The type of the disk template. Defaults to plain . OPTIONAL
 * `iallocator` - The name of the iallocator policy. Defaults to None . OPTIONAL
 
