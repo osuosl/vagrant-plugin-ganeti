@@ -13,7 +13,7 @@ module VagrantPlugins
 
         def call(env)
           env[:machine_state_id] = read_state(env[:machine])
-	  env{:ui].info{"Read the machine state id #{env[:machine].id}")
+	  env[:ui].info "Read the machine state id #{env[:machine].id}"
           @app.call(env)
         end
 
