@@ -57,6 +57,33 @@ This will start an  instance in the Ganeti Cluster. And assuming your SSH inform
 
 If you have issues with SSH connecting, make sure that the instances are being launched with a security group that allows SSH access.
 
+## Box Format
+
+Every provider in Vagrant must introduce a custom box format. This
+provider introduces `aws` boxes. You can view an example box in
+the [example_box/ directory](https://github.com/osuosl/vagrant-plugin-ganeti/blob/master/example_box/dummy.box).
+That directory also contains instructions on how to build a box.
+
+The box format is basically just the required `metadata.json` file
+along with a `Vagrantfile` that does default settings for the
+provider-specific configuration for this provider.
+
+## Configuration
+
+This provider exposes quite a few provider-specific configuration options:
+
+* `username` - The username for accessing the RAPI. REQUIRED
+* `password` - The password for the corrensponding user. REQUIRED
+* `host` - The host address of the master Ganeti Node. REQUIRED
+* `os_name` - The OS that needs to be booted up. Note : This will override the default box . OPTIONAL
+* `mode` - Mode of creation. Defaults to create. OPTIONAL
+* `instance_name` - The name of the instance. REQUIRED
+* `pnode` - The primary node where instance needs to be created. 
+* `nics` - Network configuration. REQUIRED
+* `disks` - The Size of the Disks . Defaults to 10 G . OPTIONAL
+* `disk_template` - The type of the disk template. Defaults to plain . OPTIONAL
+* `iallocator` - The name of the iallocator policy. Defaults to None . OPTIONAL
+
 ## TODO
 
 1. Add Rsync support
