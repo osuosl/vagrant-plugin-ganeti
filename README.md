@@ -28,7 +28,7 @@ Of course prior to doing this, you'll need to obtain an Ganeti-compatible box fi
 
 After installing the plugin (instructions above), the quickest way to get started is to actually use a dummy Ganeti box and specify all the details manually within a config.vm.provider block. So first, add the dummy box using any name you want:
 
-$ vagrant box add dummy https://github.com/osuosl/vagrant-plugin-ganeti/blob/master/example_box/dummy.box
+$ vagrant box add dummy https://raw.github.com/osuosl/vagrant-plugin-ganeti/master/example_box/dummy.box
 ...
 And then make a Vagrantfile that looks like the following, filling in your information where necessary.
 
@@ -61,7 +61,7 @@ If you have issues with SSH connecting, make sure that the instances are being l
 
 Every provider in Vagrant must introduce a custom box format. This
 provider introduces `aws` boxes. You can view an example box in
-the [example_box/ directory](https://github.com/osuosl/vagrant-plugin-ganeti/blob/master/example_box/dummy.box).
+the [example_box/ directory](https://github.com/osuosl/vagrant-plugin-ganeti/master/example_box/).
 That directory also contains instructions on how to build a box.
 
 The box format is basically just the required `metadata.json` file
