@@ -61,7 +61,7 @@ If you have issues with SSH connecting, make sure that the instances are being l
 
 Every provider in Vagrant must introduce a custom box format. This
 provider introduces `aws` boxes. You can view an example box in
-the [example_box/ directory](https://github.com/osuosl/vagrant-plugin-ganeti/blob/master/example_box/dummy.box).
+the [example_box/ directory](https://raw.github.com/osuosl/vagrant-plugin-ganeti/master/example_box/dummy.box).
 That directory also contains instructions on how to build a box.
 
 The box format is basically just the required `metadata.json` file
