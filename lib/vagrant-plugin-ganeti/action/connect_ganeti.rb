@@ -21,7 +21,7 @@ module VagrantPlugins
 
 	    info = {
 	    '__version__'    => 1    , 
-	    'os_type' => config.os_name ,              
+	    'os_type' => config.os_type ,              
 	    'disk_template' => config.disk_template ,
 	    'disks' => config.disks ,
 	    'instance_name' => config.instance_name ,
@@ -32,7 +32,7 @@ module VagrantPlugins
             info['iallocator'] = config.iallocator if not config.iallocator.nil?
             @logger.info("Connecting to GANETI...")
             #Call  ganeti_client ruby wrapper
-	    client = VagrantPlugins::GANETI::Util::GanetiClient.new(config.host,config.username,config.password,info)
+	    client = VagrantPlugins::GANETI::Util::GanetiClient.new(config.cluster,config.rapi_user,config.rapi_pass,info)
 	    env[:ganeti_compute] = client
 	    @app.call(env)
         end

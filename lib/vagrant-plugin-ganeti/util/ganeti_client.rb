@@ -2,12 +2,12 @@ module VagrantPlugins
   module GANETI
     module Util
 	class GanetiClient
-		attr_accessor :host, :username, :password, :version,:info
+		attr_accessor :cluster, :rapi_user, :rapi_pass, :version,:info
 		
-		def initialize(host, username, password,info)
-		    self.host = host
-		    self.username = username
-		    self.password = password
+		def initialize(cluster, rapi_user, rapi_pass,info)
+		    self.cluster = cluster
+		    self.rapi_user = rapi_user
+		    self.rapi_pass = rapi_pass
 		    self.info = info
 		    self.version = self.version_get
 		end
@@ -56,8 +56,8 @@ module VagrantPlugins
 		    return response_body
 		end
 	
-		def authenticate(username, password)
-		    basic = Base64.encode64("#{username}:#{password}").strip
+		def authenticate(rapi_user, rapi_pass)
+		    basic = Base64.encode64("#{rapi_user}:#{rapi_pass}").strip
 		    return "Basic #{basic}"
 		end
 	    
@@ -84,14 +84,14 @@ module VagrantPlugins
 
 	
 		def send_request(method, url, body = nil, headers = {}) 
-		   uri = URI.parse(host)
+		   uri = URI.parse(cluster)
 
 		   http = Net::HTTP.new(uri.host, uri.port)
 		   http.use_ssl = true
 		   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 		   headers['User-Agent'] = 'Ruby Ganeti RAPI Client'
 		   headers['Content-Type'] = 'application/json'
-		   headers['Authorization']= authenticate(self.username, self.password)
+		   headers['Authorization']= authenticate(self.rapi_user, self.rapi_pass)
 		  
 		   begin
 		       response = http.send_request(method, url, body, headers)

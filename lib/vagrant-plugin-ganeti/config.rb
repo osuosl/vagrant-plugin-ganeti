@@ -6,17 +6,17 @@ module VagrantPlugins
       # The username for accessing GANETI.
       #
       # @return [String]
-      attr_accessor :username
+      attr_accessor :rapi_user
 
       # The password for accessing GANETI.
       #
       # @return [String]
-      attr_accessor :password
+      attr_accessor :rapi_pass
 
       # The Host Detail
       #
       # @return [String]
-      attr_accessor :host
+      attr_accessor :cluster
 
       # The timeout to wait for an instance to become ready.
       #
@@ -33,7 +33,7 @@ module VagrantPlugins
       # The name of the OS to use.
       #
       # @return [String]
-      attr_accessor :os_name
+      attr_accessor :os_type
 
       # The name of the OS to use.
       #
@@ -71,11 +71,11 @@ module VagrantPlugins
       attr_accessor :iallocator
 
       def initialize()
-        @username    	= UNSET_VALUE
-        @password  	= UNSET_VALUE
-	@host           = UNSET_VALUE
+        @rapi_user    	= UNSET_VALUE
+        @rapi_pass 	= UNSET_VALUE
+	@cluster        = UNSET_VALUE
         @version     	= 2
-        @os_name      	= UNSET_VALUE
+        @os_type      	= UNSET_VALUE
 	@disk_template 	= UNSET_VALUE
 	@disks 		= UNSET_VALUE
 	@instance_name 	= UNSET_VALUE
@@ -88,14 +88,14 @@ module VagrantPlugins
 
       def finalize!
         # Username and password for the Ganei RAPI must be set .
-        @username     = ENV['USERNAME'] if @username   == UNSET_VALUE
-        @password = ENV['PASSWORD'] if @password == UNSET_VALUE
+        @rapi_user     = ENV['USERNAME'] if @rapi_user   == UNSET_VALUE
+        @rapi_pass = ENV['PASSWORD'] if @rapi_pass == UNSET_VALUE
 
         # host must be nil, since we can't default that
-        @host = nil if @host == UNSET_VALUE
+        @cluster = nil if @cluster == UNSET_VALUE
 
         # OS_NAME must be nil, since we can't default that
-        @os_name = nil if @os_name == UNSET_VALUE
+        @os_type = nil if @os_type == UNSET_VALUE
 
         # disk_template since we can't default that
         @disk_template = "plain" if @disk_template == UNSET_VALUE
@@ -132,10 +132,10 @@ module VagrantPlugins
       def validate(machine)
         errors = _detected_errors
 
-        errors << I18n.t("vagrant_ganeti.config.username_required") if @username.nil?
-        errors << I18n.t("vagrant_ganeti.config.password_required") if @password.nil?
-	errors << I18n.t("vagrant_ganeti.config.host_required") if @host.nil?
-	errors << I18n.t("vagrant_ganeti.config.os_name_required") if @os_name.nil?
+        errors << I18n.t("vagrant_ganeti.config.username_required") if @rapi_user.nil?
+        errors << I18n.t("vagrant_ganeti.config.password_required") if @rapi_pass.nil?
+	errors << I18n.t("vagrant_ganeti.config.host_required") if @cluster.nil?
+	errors << I18n.t("vagrant_ganeti.config.os_name_required") if @os_type.nil?
 	errors << I18n.t("vagrant_ganeti.config.disk_template_required") if @disk_template.nil?
         errors << I18n.t("vagrant_ganeti.config.disks_required") if @disks == nil
 	errors << I18n.t("vagrant_ganeti.config.instance_name_required") if @instance_name.nil?

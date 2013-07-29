@@ -16,10 +16,10 @@ module VagrantPlugins
 	    client = env[:ganeti_compute]
            # Launch!
             env[:ui].info(I18n.t("vagrant_ganeti.launching_instance"))
-            env[:ui].info(" -- Username: #{config.username}")
-            env[:ui].info(" -- OS NAME: #{config.os_name}")
+            env[:ui].info(" -- Username: #{config.rapi_user}")
+            env[:ui].info(" -- OS NAME: #{config.os_type}")
             env[:ui].info(" -- Instance NAME: #{config.instance_name}")
-            env[:ui].info(" -- Host: #{config.host}")
+            env[:ui].info(" -- Host: #{config.cluster}")
             env[:ui].info(" -- Primary Noode #{config.pnode}") 
             env[:ui].info(" -- Disk Template: #{config.disk_template}")
             env[:ui].info(" -- Disks #{config.disks}") 
@@ -31,6 +31,8 @@ module VagrantPlugins
  	    env[:ui].info( "Creating Instance")
 	    env[:ui].info( "This might take few minutes.....")
 	    puts env[:ganeti_compute]
+
+
 	    while true
 		if  client.is_job_ready(createjob) == "error"
 			env[:ui].info("Error Creating instance")
