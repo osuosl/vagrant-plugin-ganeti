@@ -35,10 +35,10 @@ And then make a Vagrantfile that looks like the following, filling in your infor
     Vagrant.configure("2") do |config|
       config.vm.box = "dummy"
       config.vm.provider :ganeti do |ganeti, override|
-        ganeti.username = "#rapiuser"
-        ganeti.password = "#password"
-        ganeti.host = "https://10.10.10.10:5080/"
-        ganeti.os_name = "image+debian-squeeze"
+        ganeti.rapi_user = "#rapiuser"
+        ganeti.rapi_pass = "#password"
+        ganeti.cluster = "https://10.10.10.10:5080/"
+        ganeti.os_type = "image+debian-squeeze"
         ganeti.mode = "create"
         ganeti.instance_name = "gimager3.organisation.org"
         ganeti.pnode = "gnode.organisation.org"
@@ -72,10 +72,10 @@ provider-specific configuration for this provider.
 
 This provider exposes quite a few provider-specific configuration options:
 
-* `username` - The username for accessing the RAPI. REQUIRED
-* `password` - The password for the corrensponding user. REQUIRED
-* `host` - The host address of the master Ganeti Node. REQUIRED
-* `os_name` - The OS that needs to be booted up. Note : This will override the default box . OPTIONAL
+* `rapi_user` - The username for accessing the RAPI. REQUIRED
+* `rapi_pass` - The password for the corrensponding user. REQUIRED
+* `cluster` - The host address of the master Ganeti Node. REQUIRED
+* `os_type` - The OS that needs to be booted up. Note : This will override the default box . OPTIONAL
 * `mode` - Mode of creation. Defaults to create. OPTIONAL
 * `instance_name` - The name of the instance. REQUIRED
 * `pnode` - The primary node where instance needs to be created. 
