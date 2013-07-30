@@ -85,7 +85,23 @@ This provider exposes quite a few provider-specific configuration options:
 * `iallocator` - The name of the iallocator policy. Defaults to None . OPTIONAL
 * `memory` - The size of the memory. Defaults to plain . OPTIONAL
 * `vcpus` - The No of VCPUS . Defaults to None . OPTIONAL
-* 
+
+
+## Networks
+
+Networking features in the form of `config.vm.network` are not
+supported with `vagrant-ganeti`, currently. If any of these are
+specified, Vagrant will emit a warning, but will otherwise boot
+the Ganeti machine.
+
+## Synced Folders
+
+There is minimal support for synced folders. Upon `vagrant provision`, the Ganeti provider will use
+`rsync` (if available) to uni-directionally sync the folder to
+the remote machine over SSH.
+
+This is good enough for all built-in Vagrant provisioners (shell,
+chef, and puppet) to work!
 
 
 ## TODO
