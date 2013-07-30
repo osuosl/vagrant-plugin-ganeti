@@ -128,7 +128,7 @@ module VagrantPlugins
         @pnode = nil if @pnode == UNSET_VALUE
 
         # iallocator  must be nil, since we can't default that
-        @iallocator = nil if @iallocator == UNSET_VALUE
+        @iallocator = "hail" if @iallocator == UNSET_VALUE
 
         # memory must be nil, since we can't default that
         @memory = nil if @memory == UNSET_VALUE
