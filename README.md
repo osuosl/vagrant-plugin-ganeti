@@ -83,11 +83,14 @@ This provider exposes quite a few provider-specific configuration options:
 * `disks` - The Size of the Disks . Defaults to 8 G . OPTIONAL
 * `disk_template` - The type of the disk template. Defaults to plain . OPTIONAL
 * `iallocator` - The name of the iallocator policy. Defaults to None . OPTIONAL
+* `memory` - The size of the memory. Defaults to plain . OPTIONAL
+* `vcpus` - The No of VCPUS . Defaults to None . OPTIONAL
+* 
+
 
 ## TODO
 
-1. Add Rsync support
-2. Add Support for Iallocator 
+1. Add more Features supported by RAPI
 
 ## Contributing
 
