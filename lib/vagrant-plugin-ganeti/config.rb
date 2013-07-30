@@ -65,7 +65,12 @@ module VagrantPlugins
       # @return [String]
       attr_accessor :pnode
 
-      # The name of the Primary Node
+      # The name of the Secondary Node for DRBD template
+      #
+      # @return [String]
+      attr_accessor :snode
+      
+      # The name of the Iallocatoy
       #
       # @return [String]
       attr_accessor :iallocator
@@ -92,6 +97,7 @@ module VagrantPlugins
 	@mode		= UNSET_VALUE
 	@nics 		= UNSET_VALUE
 	@pnode 		= UNSET_VALUE
+	@snode 		= UNSET_VALUE
 	@iallocator 	= UNSET_VALUE
 	@memory 	= UNSET_VALUE
 	@vcpus 		= UNSET_VALUE
@@ -126,6 +132,9 @@ module VagrantPlugins
 
         # pnode must be nil, since we can't default that
         @pnode = nil if @pnode == UNSET_VALUE
+        
+	# snode must be nil, since we can't default that
+        @snode = nil if @snode == UNSET_VALUE
 
         # iallocator  must be nil, since we can't default that
         @iallocator = "hail" if @iallocator == UNSET_VALUE
@@ -160,6 +169,7 @@ module VagrantPlugins
         errors << I18n.t("vagrant_ganeti.config.mode_required") if @mode.nil?
 	errors << I18n.t("vagrant_ganeti.config.nics_required") if @nics.nil?
 	errors << I18n.t("vagrant_ganeti.config.pnode_required") if @pnode.nil? and  @iallocator.nil?
+	errors << I18n.t("vagrant_ganeti.config.snode_required") if @snode.nil? and  @disk_template == "drbd" and @iallocator.nil?
    	{ "GANETI Provider" => errors }
 
       end

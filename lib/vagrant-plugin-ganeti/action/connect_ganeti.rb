@@ -29,6 +29,7 @@ module VagrantPlugins
 	    'nics'   => config.nics
 	     }
 	    info['pnode'] = config.pnode if not config.pnode.nil?
+	    info['snode'] = config.snode if not config.snode.nil?
             info['iallocator'] = config.iallocator if not config.iallocator.nil?
             info['beparams'] = {}
 	    info['beparams']['memory'] = config.memory if not config.memory.nil?
