@@ -18,7 +18,7 @@ module VagrantPlugins
 
         def call(env)
             config     = env[:machine].provider_config.get_config()
-
+	    
 	    info = {
 	    '__version__'    => 1    , 
 	    'os_type' => config.os_type ,              
@@ -30,7 +30,14 @@ module VagrantPlugins
 	     }
 	    info['pnode'] = config.pnode if not config.pnode.nil?
             info['iallocator'] = config.iallocator if not config.iallocator.nil?
-            @logger.info("Connecting to GANETI...")
+            info['beparams'] = {}
+	    info['beparams']['memory'] = config.memory if not config.memory.nil?
+	    info['beparams']['vcpus'] = config.vcpus if not config.vcpus.nil?    
+	
+
+
+
+	    @logger.info("Connecting to GANETI...")
             #Call  ganeti_client ruby wrapper
 	    client = VagrantPlugins::GANETI::Util::GanetiClient.new(config.cluster,config.rapi_user,config.rapi_pass,info)
 	    env[:ganeti_compute] = client

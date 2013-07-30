@@ -16,17 +16,20 @@ module VagrantPlugins
 	    client = env[:ganeti_compute]
            # Launch!
             env[:ui].info(I18n.t("vagrant_ganeti.launching_instance"))
-            env[:ui].info(" -- Username: #{config.rapi_user}")
-            env[:ui].info(" -- OS NAME: #{config.os_type}")
+            env[:ui].info(" -- Rapi User: #{config.rapi_user}")
+            env[:ui].info(" -- OS Type: #{config.os_type}")
             env[:ui].info(" -- Instance NAME: #{config.instance_name}")
-            env[:ui].info(" -- Host: #{config.cluster}")
-            env[:ui].info(" -- Primary Noode #{config.pnode}") 
+            env[:ui].info(" -- Cluster: #{config.cluster}")
+            env[:ui].info(" -- Primary Node #{config.pnode}") if not config.pnode.nil?
             env[:ui].info(" -- Disk Template: #{config.disk_template}")
             env[:ui].info(" -- Disks #{config.disks}") 
             env[:ui].info(" -- Network Configurations: #{config.nics}") 
+            env[:ui].info(" -- Memory : #{config.memory }") if not config.memory.nil?
+            env[:ui].info(" -- VCPUs : #{config.vcpus }") if not config.vcpus.nil? 
+            env[:ui].info(" -- Iallocator Policy : #{config.iallocator }") if config.iallocator.nil?
             env[:ui].info(" -- Version : #{config.version }") if config.version 
-
-            createjob = client.instance_create()
+            
+	    createjob = client.instance_create()
 	    env[:ui].info( "New Job Created #{createjob}.")
  	    env[:ui].info( "Creating Instance")
 	    env[:ui].info( "This might take few minutes.....")

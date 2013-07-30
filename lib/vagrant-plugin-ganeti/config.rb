@@ -70,6 +70,16 @@ module VagrantPlugins
       # @return [String]
       attr_accessor :iallocator
 
+      # Memory Configurations in MB's
+      #
+      # @return [{hash}]
+      attr_accessor :memory
+
+      # VCPU configuration
+      #
+      # @return [String]
+      attr_accessor :vcpus
+
       def initialize()
         @rapi_user    	= UNSET_VALUE
         @rapi_pass 	= UNSET_VALUE
@@ -83,6 +93,8 @@ module VagrantPlugins
 	@nics 		= UNSET_VALUE
 	@pnode 		= UNSET_VALUE
 	@iallocator 	= UNSET_VALUE
+	@memory 	= UNSET_VALUE
+	@vcpus 		= UNSET_VALUE
         @__finalized 	= false
       end
 
@@ -115,9 +127,15 @@ module VagrantPlugins
         # pnode must be nil, since we can't default that
         @pnode = nil if @pnode == UNSET_VALUE
 
-        # pnode must be nil, since we can't default that
+        # iallocator  must be nil, since we can't default that
         @iallocator = nil if @iallocator == UNSET_VALUE
-        
+
+        # memory must be nil, since we can't default that
+        @memory = nil if @memory == UNSET_VALUE
+
+        # vcpu must be nil, since we can't default that
+        @vcpus = nil if @vcpus == UNSET_VALUE
+	
 	# Set the default timeout for waiting for an instance to be ready
         @instance_ready_timeout = 120 if @instance_ready_timeout == UNSET_VALUE
 
