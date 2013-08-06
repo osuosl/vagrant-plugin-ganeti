@@ -55,7 +55,7 @@ module VagrantPlugins
 		      	if client.is_job_ready(bootinstancejob) == "success" 
 				env[:machine].id = client.info['nics'][0]['ip']
 			        env[:ui].info( "#{ env[:machine].id}")
-				env[:ui].info("Instance Started Sucessfully")
+				env[:ui].info("Instance Started Successfully")
 		        else
 			 	env[:ui].info("Error Staring Instance")
                         end 

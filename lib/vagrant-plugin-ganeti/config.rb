@@ -95,6 +95,16 @@ module VagrantPlugins
       # @return [String]
       attr_accessor :ip_check
 
+      # Name Check
+      #
+      # @return [{hash}]
+      attr_accessor :name_check
+
+      # IP Check  configuration
+      #
+      # @return [String]
+      attr_accessor :ip_check
+      
       def initialize()
         @rapi_user    	= UNSET_VALUE
         @rapi_pass 	= UNSET_VALUE
