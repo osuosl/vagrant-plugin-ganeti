@@ -39,7 +39,6 @@ And then make a Vagrantfile that looks like the following, filling in your infor
         ganeti.rapi_pass = "#password"
         ganeti.cluster = "https://10.10.10.10:5080/"
         ganeti.os_type = "image+debian-squeeze"
-        ganeti.mode = "create"
         ganeti.instance_name = "gimager3.organisation.org"
         ganeti.pnode = "gnode.organisation.org"
         ganeti.nics = [{"ip"=>"10.10.10.100"}]
@@ -79,6 +78,7 @@ This provider exposes quite a few provider-specific configuration options:
 * `mode` - Mode of creation. Defaults to create. OPTIONAL
 * `instance_name` - The name of the instance. REQUIRED
 * `pnode` - The primary node where instance needs to be created. Defaults to None. OPTIONAL
+* `snode` - The Secondary node in case of drbd is used. Defaults to None. OPTIONAL
 * `nics` - Network configuration. REQUIRED
 * `disks` - The Size of the Disks . Defaults to 8 G . OPTIONAL
 * `disk_template` - The type of the disk template. Defaults to plain . OPTIONAL
