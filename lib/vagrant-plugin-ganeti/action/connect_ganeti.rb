@@ -28,13 +28,16 @@ module VagrantPlugins
 	    'mode' => config.mode ,        
 	    'nics'   => config.nics
 	     }
+#	    print "nAME check"
+#	    print config.name_check 	    
+	    info['ip_check'] =false if not config.ip_check.nil? and config.ip_check ==false
+	    info['name_check'] =false if not config.name_check.nil? and config.name_check ==false
 	    info['pnode'] = config.pnode if not config.pnode.nil?
 	    info['snode'] = config.snode if not config.snode.nil?
             info['iallocator'] = config.iallocator if not config.iallocator.nil?
             info['beparams'] = {}
 	    info['beparams']['memory'] = config.memory if not config.memory.nil?
-	    info['beparams']['vcpus'] = config.vcpus if not config.vcpus.nil?    
-	
+	    info['beparams']['vcpus'] = config.vcpus if not config.vcpus.nil?  
 
 
 

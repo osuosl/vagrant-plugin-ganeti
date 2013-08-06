@@ -28,22 +28,26 @@ module VagrantPlugins
             env[:ui].info(" -- VCPUs : #{config.vcpus }") if not config.vcpus.nil? 
             env[:ui].info(" -- Iallocator Policy : #{config.iallocator }") if not config.iallocator.nil?
             env[:ui].info(" -- Version : #{config.version }") if config.version 
-            
+            env[:ui].info(" -- ip_check : #{config.ip_check }") if not config.ip_check.nil?
+            env[:ui].info(" -- name_check : #{config.name_check }") if not config.name_check.nil?
+	    
 	    createjob = client.instance_create()
 	    env[:ui].info( "New Job Created #{createjob}.")
- 	    env[:ui].info( "Creating Instance")
+ 	    env[:ui].info( "Preparing to Create Instance")
 	    env[:ui].info( "This might take few minutes.....")
 	    puts env[:ganeti_compute]
 
 
 	    while true
-		if  client.is_job_ready(createjob) == "error"
+		status =  client.is_job_ready(createjob)
+
+		if  status == "error"
 			env[:ui].info("Error Creating instance")
 			break
-		elsif client.is_job_ready(createjob) == "running"
+		elsif status == "running"
 			#Waiting for the message to succeed
 			sleep(15)
-		elsif client.is_job_ready(createjob) == "success" or  client.is_job_ready(createjob) == "already_exists"
+		elsif status  == "success"
 	    		env[:ui].info( "Instance sucessfully Created.")
  	    		env[:ui].info( "Booting up the Instance.")
             		bootinstancejob = client.start_instance()
@@ -56,7 +60,12 @@ module VagrantPlugins
 			 	env[:ui].info("Error Staring Instance")
                         end 
 			break
+		elsif status == "already_exists"
+			env[:ui].info( "Instance already Exists. Use Vagrant SSH to login .\nUse 'vagrant destroy' and 'vagrant up' again to create instance afresh")	
+			env[:machine].id = client.info['nics'][0]['ip']
+			break
 		end
+	
             end
 
           @app.call(env)

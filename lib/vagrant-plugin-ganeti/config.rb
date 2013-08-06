@@ -85,6 +85,16 @@ module VagrantPlugins
       # @return [String]
       attr_accessor :vcpus
 
+      # Name Check
+      #
+      # @return [{hash}]
+      attr_accessor :name_check
+
+      # IP Check  configuration
+      #
+      # @return [String]
+      attr_accessor :ip_check
+
       def initialize()
         @rapi_user    	= UNSET_VALUE
         @rapi_pass 	= UNSET_VALUE
@@ -101,6 +111,8 @@ module VagrantPlugins
 	@iallocator 	= UNSET_VALUE
 	@memory 	= UNSET_VALUE
 	@vcpus 		= UNSET_VALUE
+	@ip_check 	= UNSET_VALUE
+	@name_check 	= UNSET_VALUE
         @__finalized 	= false
       end
 
@@ -144,6 +156,12 @@ module VagrantPlugins
 
         # vcpu must be nil, since we can't default that
         @vcpus = nil if @vcpus == UNSET_VALUE
+	
+        # ip_check defaults to True
+        @ip_check = true if @ip_check == UNSET_VALUE
+
+        # name_check defaults to True
+        @name_check = true if @name_check == UNSET_VALUE
 	
 	# Set the default timeout for waiting for an instance to be ready
         @instance_ready_timeout = 120 if @instance_ready_timeout == UNSET_VALUE
