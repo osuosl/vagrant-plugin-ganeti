@@ -88,6 +88,21 @@ This provider exposes quite a few provider-specific configuration options:
 * `ip_check` - Either 'true' or 'false' (Without quotes). Defaults to true . OPTIONAL
 * `name_check` - Either 'true' or 'false' (Without quotes) . Defaults to true . OPTIONAL
 
+
+hvparams settings
+* `boot_order` - Defaults to None . OPTIONAL
+* `cdrom_image_path` - Defaults to None . OPTIONAL
+* `nic_type` - Defaults to None . OPTIONAL
+* `disk_type` - Defaults to None . OPTIONAL
+* `cpu_type` - Defaults to None . OPTIONAL
+* `kernel_path` - Defaults to None . OPTIONAL
+* `kernel_args` - Defaults to None . OPTIONAL
+* `initrd_path` - Defaults to None . OPTIONAL
+* `root_path` - Defaults to None . OPTIONAL
+* `serial_console` - Defaults to None . OPTIONAL
+* `kvm_flag` - Defaults to None . OPTIONAL
+
+
 ## Networks
 
 Networking features in the form of `config.vm.network` are not
