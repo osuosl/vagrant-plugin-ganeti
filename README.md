@@ -85,8 +85,8 @@ This provider exposes quite a few provider-specific configuration options:
 * `iallocator` - The name of the iallocator policy. Defaults to "hail" . OPTIONAL
 * `memory` - The size of the memory. Defaults to plain . OPTIONAL
 * `vcpus` - The No of VCPUS . Defaults to None . OPTIONAL
-* `ip_check` - Either 'true' or 'false' (Without qoutes). Defaults to true . OPTIONAL
-* `name_check` - Either 'true' or 'false' (Without qoutes) . Defaults to true . OPTIONAL
+* `ip_check` - Either 'true' or 'false' (Without quotes). Defaults to true . OPTIONAL
+* `name_check` - Either 'true' or 'false' (Without quotes) . Defaults to true . OPTIONAL
 
 ## Networks
 
