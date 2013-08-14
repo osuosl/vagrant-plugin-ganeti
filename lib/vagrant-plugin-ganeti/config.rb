@@ -77,7 +77,7 @@ module VagrantPlugins
 
       # Memory Configurations in MB's
       #
-      # @return [{hash}]
+      # @return [String]
       attr_accessor :memory
 
       # VCPU configuration
@@ -87,23 +87,73 @@ module VagrantPlugins
 
       # Name Check
       #
-      # @return [{hash}]
+      # @return [Boolean]
       attr_accessor :name_check
 
       # IP Check  configuration
       #
-      # @return [String]
+      # @return [Boolean]
       attr_accessor :ip_check
 
-      # Name Check
-      #
-      # @return [{hash}]
-      attr_accessor :name_check
-
-      # IP Check  configuration
+      # hvparam Configs
       #
       # @return [String]
-      attr_accessor :ip_check
+      attr_accessor :hvparam
+      
+      # hvparam Configs
+      #
+      # @return [String]
+      attr_accessor :boot_order
+      
+      # hvparam Configs 
+      #
+      # @return [String]
+      attr_accessor :cdrom_image_path
+
+      # hvparam Configs 
+      #
+      # @return [String]
+      attr_accessor :nic_type
+      
+      # hvparam Configs 
+      #
+      # @return [String]
+      attr_accessor :disk_type
+
+      # hvparam Configs 
+      #
+      # @return [String]
+      attr_accessor :cpu_type
+      
+      # hvparam Configs 
+      #
+      # @return [String]
+      attr_accessor :kernel_path
+
+      # hvparam Configs 
+      #
+      # @return [String]
+      attr_accessor :kernel_args
+      
+      # hvparam Configs 
+      #
+      # @return [String]
+      attr_accessor :initrd_path
+
+      # hvparam Configs 
+      #
+      # @return [String]
+      attr_accessor :root_path
+
+      # hvparam Configs 
+      #
+      # @return [String]
+      attr_accessor :serial_console
+
+      # hvparam Configs 
+      #
+      # @return [String]
+      attr_accessor :kvm_flag
       
       def initialize()
         @rapi_user    	= UNSET_VALUE
@@ -123,6 +173,17 @@ module VagrantPlugins
 	@vcpus 		= UNSET_VALUE
 	@ip_check 	= UNSET_VALUE
 	@name_check 	= UNSET_VALUE
+	@boot_order 	= UNSET_VALUE
+	@cdrom_image_path = UNSET_VALUE
+	@nic_type	= UNSET_VALUE
+	@disk_type	= UNSET_VALUE
+	@cpu_type	= UNSET_VALUE
+	@kernel_path 	= UNSET_VALUE
+	@kernel_args 	= UNSET_VALUE
+	@initrd_path	= UNSET_VALUE
+	@root_path	= UNSET_VALUE
+	@serial_console	= UNSET_VALUE
+	@kvm_flag 	= UNSET_VALUE
         @__finalized 	= false
       end
 
