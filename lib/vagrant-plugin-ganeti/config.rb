@@ -234,6 +234,40 @@ module VagrantPlugins
         # name_check defaults to True
         @name_check = true if @name_check == UNSET_VALUE
 	
+        # boot_order defaults to Nil
+        @boot_order = nil if @boot_order == UNSET_VALUE
+	
+        # cdrom_image_path to Nil
+        @cdrom_image_path= nil if @cdrom_image_path == UNSET_VALUE
+	
+        # nic_type defaults to nil
+        @nic_type = nil if @nic_type == UNSET_VALUE
+	
+        # disk_type defaults to nil
+        @disk_type = nil if @disk_type == UNSET_VALUE
+	
+        # cpu_type defaults to nil
+        @cpu_type = nil if @cpu_type == UNSET_VALUE
+		
+        # kernel_path defaults to nil
+        @kernel_path = nil if @kernel_path == UNSET_VALUE
+        
+	# kernel_args defaults to nil
+        @kernel_args = nil if @kernel_args == UNSET_VALUE
+        
+        
+	# initrd_path defaults to nil
+        @initrd_path = nil if @initrd_path == UNSET_VALUE
+	
+	# root_path_path defaults to nil
+        @root_path = nil if @root_path == UNSET_VALUE
+	
+	# serial_console defaults to nil
+        @serial_console = nil if @serial_console == UNSET_VALUE
+
+	# kvm_flag defaults to nil
+        @kvm_flag = nil if @kvm_flag == UNSET_VALUE
+	
 	# Set the default timeout for waiting for an instance to be ready
         @instance_ready_timeout = 120 if @instance_ready_timeout == UNSET_VALUE
 
