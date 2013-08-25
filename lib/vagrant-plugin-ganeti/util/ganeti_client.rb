@@ -4,14 +4,16 @@ module VagrantPlugins
 	class GanetiClient
 		attr_accessor :cluster, :rapi_user, :rapi_pass, :version,:info
 		
-		def initialize(cluster, rapi_user, rapi_pass,info)
+		def initialize(cluster, rapi_user, rapi_pass)
 		    self.cluster = cluster
 		    self.rapi_user = rapi_user
 		    self.rapi_pass = rapi_pass
-		    self.info = info
 		    self.version = self.version_get
 		end
 
+		def set_config(info)
+		    self.info = info
+		end
 	
 		def instance_create( dry_run = 0)
 		    url = get_url("instances")
@@ -40,6 +42,12 @@ module VagrantPlugins
 		    else
 			response_body["status"]
 		    end
+		end
+
+		def set_default_iallocator()
+		    url = get_url("info")
+		    response_body = send_request("GET", url)
+		    return  response_body["default_iallocator"]
 		end
 
 		def start_instance()

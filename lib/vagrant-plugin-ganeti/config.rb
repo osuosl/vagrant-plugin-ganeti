@@ -189,8 +189,8 @@ module VagrantPlugins
 
       def finalize!
         # Username and password for the Ganei RAPI must be set .
-        @rapi_user     = ENV['USERNAME'] if @rapi_user   == UNSET_VALUE
-        @rapi_pass = ENV['PASSWORD'] if @rapi_pass == UNSET_VALUE
+        @rapi_user     = nil if @rapi_user   == UNSET_VALUE
+        @rapi_pass = nil  if @rapi_pass == UNSET_VALUE
 
         # host must be nil, since we can't default that
         @cluster = nil if @cluster == UNSET_VALUE
@@ -219,8 +219,8 @@ module VagrantPlugins
 	# snode must be nil, since we can't default that
         @snode = nil if @snode == UNSET_VALUE
 
-        # iallocator  must be nil, since we can't default that
-        @iallocator = "hail" if @iallocator == UNSET_VALUE
+        # iallocator Get default from ganeti cluster
+        @iallocator = "__DEFAULT__" if @iallocator == UNSET_VALUE
 
         # memory must be nil, since we can't default that
         @memory = nil if @memory == UNSET_VALUE

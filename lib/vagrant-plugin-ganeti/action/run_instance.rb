@@ -26,7 +26,7 @@ module VagrantPlugins
             env[:ui].info(" -- Network Configurations: #{config.nics}") 
             env[:ui].info(" -- Memory : #{config.memory }") if not config.memory.nil?
             env[:ui].info(" -- VCPUs : #{config.vcpus }") if not config.vcpus.nil? 
-            env[:ui].info(" -- Iallocator Policy : #{config.iallocator }") if not config.iallocator.nil?
+            env[:ui].info(" -- Iallocator Policy : #{config.iallocator }") if not config.iallocator == "__DEFAULT__"
             env[:ui].info(" -- Version : #{config.version }") if config.version 
             env[:ui].info(" -- ip_check : #{config.ip_check }") if not config.ip_check.nil?
             env[:ui].info(" -- name_check : #{config.name_check }") if not config.name_check.nil?
