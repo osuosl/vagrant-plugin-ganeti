@@ -82,7 +82,7 @@ This provider exposes quite a few provider-specific configuration options:
 * `nics` - Network configuration. REQUIRED
 * `disks` - The Size of the Disks . Defaults to 8 G . OPTIONAL
 * `disk_template` - The type of the disk template. Defaults to plain . OPTIONAL
-* `iallocator` - The name of the iallocator policy. Defaults to "hail" . OPTIONAL
+* `iallocator` - The name of the iallocator policy. Defaults to cluster default . OPTIONAL
 * `memory` - The size of the memory. Defaults to plain . OPTIONAL
 * `vcpus` - The No of VCPUS . Defaults to None . OPTIONAL
 * `ip_check` - Either 'true' or 'false' (Without quotes). Defaults to true . OPTIONAL
