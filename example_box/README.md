@@ -5,7 +5,7 @@ This folder shows the example contents of a box for the `ganeti` provider.
 To turn this into a box:
 
 ```
-$ tar cvzf dummy.box ./metadata.json ./Vagrantfile
+$ tar cvzf ganeti.box ./metadata.json ./Vagrantfile
 ```
 
 This box works by using Vagrant's built-in Vagrantfile merging to setup
