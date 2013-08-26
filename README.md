@@ -26,14 +26,14 @@ Of course prior to doing this, you'll need to obtain an Ganeti-compatible box fi
 
 ##Quick Start
 
-After installing the plugin (instructions above), the quickest way to get started is to actually use a dummy Ganeti box and specify all the details manually within a config.vm.provider block. So first, add the dummy box using any name you want:
+After installing the plugin (instructions above), the quickest way to get started is to actually use a "ganeti" Ganeti box and specify all the details manually within a config.vm.provider block. So first, add the "ganeti" box using any name you want:
 
-$ vagrant box add dummy https://raw.github.com/osuosl/vagrant-plugin-ganeti/master/example_box/dummy.box
+$ vagrant box add ganeti https://raw.github.com/osuosl/vagrant-plugin-ganeti/master/example_box/ganeti.box
 ...
 And then make a Vagrantfile that looks like the following, filling in your information where necessary.
 
     Vagrant.configure("2") do |config|
-      config.vm.box = "dummy"
+      config.vm.box = "ganeti"
       config.vm.provider :ganeti do |ganeti, override|
         ganeti.rapi_user = "#rapiuser"
         ganeti.rapi_pass = "#password"
