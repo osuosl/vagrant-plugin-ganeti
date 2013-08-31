@@ -7,15 +7,14 @@ NOTE: This project is work in progress, there are lot of things which might not 
 
 ## Installation
 
-Build the Gem:
+Building the Gem from source:
 
     $  gem build 'vagrant-plugin-ganeti.gemspec'
 
 
+Alternatively you could, Install using standard Vagrant 1.1+ plugin installation methods. After installing, vagrant up and specify the ganeti provider. An example is shown below.
 
-Install using standard Vagrant 1.1+ plugin installation methods. After installing, vagrant up and specify the ganeti provider. An example is shown below.
-
-    $  vagrant plugin install vagrant-plugin-ganeti-0.0.1.gem
+    $  vagrant plugin install vagrant-plugin-ganeti
 
 ## Usage
 
