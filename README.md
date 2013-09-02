@@ -76,7 +76,7 @@ This provider exposes quite a few provider-specific configuration options:
 * `rapi_user` - The username for accessing the RAPI. REQUIRED
 * `rapi_pass` - The password for the corrensponding user. REQUIRED
 * `cluster` - The host address of the master Ganeti Node. REQUIRED
-* * `instance_name` - The name of the instance. REQUIRED
+* `instance_name` - The name of the instance. REQUIRED
 * `os_type` - The OS that needs to be booted up. Note : This will override the default box . OPTIONAL
 * `mode` - Mode of creation. Defaults to create. OPTIONAL
 * `pnode` - The primary node where instance needs to be created. Defaults to None. OPTIONAL
