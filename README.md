@@ -40,18 +40,21 @@ And then make a Vagrantfile that looks like the following, filling in your infor
         ganeti.os_type = "image+debian-squeeze"
         ganeti.instance_name = "gimager3.organisation.org"
         ganeti.pnode = "gnode.organisation.org"
-        ganeti.nics = [{"ip"=>"10.10.10.100"}]
         ganeti.disks =[{"size"=>"8000"}] 
         ganeti.disk_template = "plain"
-        override.ssh.username = "User name of the default user "
-        override.ssh.private_key_path = "Path to your private key"
+        override.ssh.username = "root"
       end
     end
 
 
 And then run vagrant up --provider=ganeti.
+        
+This will start an  instance in the Ganeti Cluster.
 
-This will start an  instance in the Ganeti Cluster. And assuming your SSH information was filled in properly within your Vagrantfile, SSH and provisioning will work as well.
+Other overridable settings include 
+
+        override.ssh.username = "User Name"
+        override.ssh.private_key_path = "Path to your private key"
 
 If you have issues with SSH connecting, make sure that the instances are being launched with a security group that allows SSH access.
 
@@ -73,13 +76,15 @@ This provider exposes quite a few provider-specific configuration options:
 * `rapi_user` - The username for accessing the RAPI. REQUIRED
 * `rapi_pass` - The password for the corrensponding user. REQUIRED
 * `cluster` - The host address of the master Ganeti Node. REQUIRED
+* `instance_name` - The name of the instance. REQUIRED
 * `os_type` - The OS that needs to be booted up. Note : This will override the default box . OPTIONAL
 * `mode` - Mode of creation. Defaults to create. OPTIONAL
-* `instance_name` - The name of the instance. REQUIRED
 * `pnode` - The primary node where instance needs to be created. Defaults to None. OPTIONAL
 * `snode` - The Secondary node in case of drbd is used. Defaults to None. OPTIONAL
-* `nics` - Network configuration. REQUIRED
+* `nics` - Network configuration. OPTIONAL
+    * List of (Dictionary with keys of (OneOf bridge, name, ip, vlan, mac, link, mode, network) and values of (None or String)
 * `disks` - The Size of the Disks . Defaults to 8 G . OPTIONAL
+    * List of (Dictionary with keys of (OneOf name, vg, adopt, spindles, mode, provider, metavg, size) and values of (NonEmptyString or Integer)
 * `disk_template` - The type of the disk template. Defaults to plain . OPTIONAL
 * `iallocator` - The name of the iallocator policy. Defaults to cluster default . OPTIONAL
 * `memory` - The size of the memory. Defaults to plain . OPTIONAL
