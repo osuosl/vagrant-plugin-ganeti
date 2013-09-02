@@ -53,7 +53,7 @@ module VagrantPlugins
             		bootinstancejob = client.start_instance()
 			sleep(3)
 		      	if client.is_job_ready(bootinstancejob) == "success" 
-				env[:machine].id = client.info['nics'][0]['ip']
+				env[:machine].id = client.info['instance_name']
 			        env[:ui].info( "#{ env[:machine].id}")
 				env[:ui].info("Instance Started Successfully")
 		        else
@@ -62,7 +62,7 @@ module VagrantPlugins
 			break
 		elsif status == "already_exists"
 			env[:ui].info( "Instance already Exists. Use Vagrant SSH to login .\nUse 'vagrant destroy' and 'vagrant up' again to create instance afresh")	
-			env[:machine].id = client.info['nics'][0]['ip']
+			env[:machine].id = client.info['instance_name']
 			break
 		end
 	

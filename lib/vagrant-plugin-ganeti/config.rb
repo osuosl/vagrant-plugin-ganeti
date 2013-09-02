@@ -290,7 +290,6 @@ module VagrantPlugins
         errors << I18n.t("vagrant_ganeti.config.disks_required") if @disks == nil
 	errors << I18n.t("vagrant_ganeti.config.instance_name_required") if @instance_name.nil?
         errors << I18n.t("vagrant_ganeti.config.mode_required") if @mode.nil?
-	errors << I18n.t("vagrant_ganeti.config.nics_required") if @nics.nil?
 	errors << I18n.t("vagrant_ganeti.config.pnode_required") if @pnode.nil? and  @iallocator.nil?
 	errors << I18n.t("vagrant_ganeti.config.snode_required") if @snode.nil? and  @disk_template == "drbd" and @iallocator.nil?
    	{ "GANETI Provider" => errors }
