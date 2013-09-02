@@ -50,7 +50,8 @@ And then make a Vagrantfile that looks like the following, filling in your infor
 And then run vagrant up --provider=ganeti.
         
 This will start an  instance in the Ganeti Cluster.
-Other overridable Settings Include 
+
+Other overridable settings include 
 
         override.ssh.username = "User Name"
         override.ssh.private_key_path = "Path to your private key"
