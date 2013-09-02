@@ -42,15 +42,18 @@ And then make a Vagrantfile that looks like the following, filling in your infor
         ganeti.pnode = "gnode.organisation.org"
         ganeti.disks =[{"size"=>"8000"}] 
         ganeti.disk_template = "plain"
-        override.ssh.username = "User name of the default user "
-        override.ssh.private_key_path = "Path to your private key"
+        override.ssh.username = "root"
       end
     end
 
 
 And then run vagrant up --provider=ganeti.
+        
+This will start an  instance in the Ganeti Cluster.
+Other overridable Settings Include 
 
-This will start an  instance in the Ganeti Cluster. And assuming your SSH information was filled in properly within your Vagrantfile, SSH and provisioning will work as well.
+        override.ssh.username = "User Name"
+        override.ssh.private_key_path = "Path to your private key"
 
 If you have issues with SSH connecting, make sure that the instances are being launched with a security group that allows SSH access.
 
