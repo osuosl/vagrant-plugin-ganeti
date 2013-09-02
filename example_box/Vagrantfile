@@ -3,6 +3,6 @@
 
 Vagrant.configure("2") do |config|
   config.vm.provider :ganeti do |ganeti|
-    ganeti.os_name = "image+debian-squeeze"
+    ganeti.os_type = "image+debian-squeeze"
   end
 end

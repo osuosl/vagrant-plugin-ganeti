@@ -1,11 +1,11 @@
 require "pathname"
 
-require "vagrant-plugin-ganeti/plugin"
-require "vagrant-plugin-ganeti/util/ganeti_client"
+require "vagrant-ganeti/plugin"
+require "vagrant-ganeti/util/ganeti_client"
 
 module VagrantPlugins
   module GANETI
-    lib_path = Pathname.new(File.expand_path("../vagrant-plugin-ganeti", __FILE__))
+    lib_path = Pathname.new(File.expand_path("../vagrant-ganeti", __FILE__))
     autoload :Action, lib_path.join("action")
     autoload :Errors, lib_path.join("errors")
 

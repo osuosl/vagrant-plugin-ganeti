@@ -1,8 +1,8 @@
 $:.unshift File.expand_path("../lib", __FILE__)
-require "vagrant-plugin-ganeti/version"
+require "vagrant-ganeti/version"
 
 Gem::Specification.new do |s|
-  s.name          = "vagrant-plugin-ganeti"
+  s.name          = "vagrant-ganeti"
   s.version       = VagrantPlugins::GANETI::VERSION
   s.platform      = Gem::Platform::RUBY
   s.authors       = "AHMED Shabib"
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description   = "Enables Vagrant to manage machines in Ganeti."
 
   s.required_rubygems_version = ">= 1.3.6"
-  s.rubyforge_project         = "vagrant-plugin-ganeti"
+  s.rubyforge_project         = "vagrant-ganeti"
 
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec-core", "~> 2.12.2"
