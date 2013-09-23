@@ -72,11 +72,13 @@ provider-specific configuration for this provider.
 ## Configuration
 
 This provider exposes quite a few provider-specific configuration options:
-
+### Required Parameters
 * `rapi_user` - The username for accessing the RAPI. REQUIRED
 * `rapi_pass` - The password for the corrensponding user. REQUIRED
 * `cluster` - The host address of the master Ganeti Node. REQUIRED
 * `instance_name` - The name of the instance. REQUIRED
+
+### Optional Parameters
 * `os_type` - The OS that needs to be booted up. Note : This will override the default box . OPTIONAL
 * `mode` - Mode of creation. Defaults to create. OPTIONAL
 * `pnode` - The primary node where instance needs to be created. Defaults to None. OPTIONAL
@@ -93,7 +95,7 @@ This provider exposes quite a few provider-specific configuration options:
 * `name_check` - Either 'true' or 'false' (Without quotes) . Defaults to true . OPTIONAL
 
 
-hvparams settings
+####hvparams settings
 * `boot_order` - Defaults to None . OPTIONAL
 * `cdrom_image_path` - Defaults to None . OPTIONAL
 * `nic_type` - Defaults to None . OPTIONAL
@@ -123,6 +125,31 @@ the remote machine over SSH.
 This is good enough for all built-in Vagrant provisioners (shell,
 chef, and puppet) to work!
 
+## Advanced Examples 
+#### Having Multiple Disks
+
+    Vagrant.configure("2") do |config|
+      config.vm.box = "ganeti"
+      config.vm.provider :ganeti do |ganeti, override|
+        .....
+        ganeti.disks =[{"size"=>"8000"},{"size"=>"16000"}] 
+        .....
+      end
+    end
+This creates two disks in the instance one of 8G and another of 16G.
+
+#### Having Multiple Nics
+
+    Vagrant.configure("2") do |config|
+      config.vm.box = "ganeti"
+      config.vm.provider :ganeti do |ganeti, override|
+        .....
+        ganeti.nics =[{"ip": "198.51.100.4"}, {"ip": "10.10.100.4"}, {"ip": "10.11.100.4"}]
+        .....
+      end
+    end
+
+Configuration parameter "nics" must be List of - Dictionary with keys of (OneOf bridge, name, ip, vlan, mac, link, mode, network)
 
 ## TODO
 
