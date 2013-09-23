@@ -95,6 +95,8 @@ This provider exposes quite a few provider-specific configuration options:
 * `ip_check` - Either 'true' or 'false' (Without quotes). Defaults to true . 
 * `name_check` - Either 'true' or 'false' (Without quotes) . Defaults to true . 
 
+More about Ganeti Instance parameters can be found [here](http://docs.ganeti.org/ganeti/current/html/rapi.html#id138)
+
 ####hvparams settings
 * `boot_order` - Defaults to None . 
 * `cdrom_image_path` - Defaults to None . 
@@ -108,6 +110,7 @@ This provider exposes quite a few provider-specific configuration options:
 * `serial_console` - Defaults to None . 
 * `kvm_flag` - Defaults to None . 
 
+More about hvparam settings can be found [here](http://docs.ganeti.org/ganeti/current/man/gnt-instance.html)
 
 ## Networks
 
