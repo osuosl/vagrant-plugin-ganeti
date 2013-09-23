@@ -2,8 +2,9 @@
 This is a Vagrant 1.2+ plugin that adds an Ganeti provider to Vagrant, allowing Vagrant to control and provision 
 machines in Ganeti.
 
-NOTE: This plugin requires Vagrant 1.2
-NOTE: This project is work in progress, there are lot of things which might not work yet.
+**NOTE:** This plugin requires **Vagrant 1.2**
+
+**NOTE:** This project is work in progress, there are lot of things which might not work yet.
 
 ## Installation
 
@@ -79,7 +80,7 @@ This provider exposes quite a few provider-specific configuration options:
 * `instance_name` - The name of the instance. REQUIRED
 
 ### Optional Parameters
-* `os_type` - The OS that needs to be booted up. Note : This will override the default box . OPTIONAL
+* `os_type` - The OS that needs to be booted up. **Note :** This will override the default box . OPTIONAL
 * `mode` - Mode of creation. Defaults to create. OPTIONAL
 * `pnode` - The primary node where instance needs to be created. Defaults to None. OPTIONAL
 * `snode` - The Secondary node in case of drbd is used. Defaults to None. OPTIONAL
@@ -148,8 +149,8 @@ This creates two disks in the instance one of 8G and another of 16G.
         .....
       end
     end
-This creates 3 nic interfaces having ip addresses 198.51.100.4,10.10.100.4 and 10.11.100.4 .
-Configuration parameter "nics" must be List of - Dictionary with keys of (OneOf bridge, name, ip, vlan, mac, link, mode, network)
+This creates 3 nic interfaces having ip addresses **198.51.100.4**,**10.10.100.4** and **10.11.100.4** .
+Configuration parameter **nics** must be List of - Dictionary with keys of (OneOf bridge, name, ip, vlan, mac, link, mode, network)
 
 ## TODO
 
