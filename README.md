@@ -144,7 +144,7 @@ This creates two disks in the instance one of 8G and another of 16G.
       config.vm.box = "ganeti"
       config.vm.provider :ganeti do |ganeti, override|
         .....
-        ganeti.nics =[{"ip": "198.51.100.4"}, {"ip": "10.10.100.4"}, {"ip": "10.11.100.4"}]
+        ganeti.nics =[{"ip"=> "198.51.100.4"}, {"link"=> "br0" ,"ip"=> "10.10.100.4"}, {"ip"=> "10.11.100.4"}]
         .....
       end
     end
