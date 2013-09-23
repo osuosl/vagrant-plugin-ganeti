@@ -148,7 +148,7 @@ This creates two disks in the instance one of 8G and another of 16G.
         .....
       end
     end
-This creates 3 nic interfaces having ip addresses **198.51.100.4**,**10.10.100.4** and **10.11.100.4** .
+This creates 3 nic interfaces having ip addresses **198.51.100.4** , **10.10.100.4** and **10.11.100.4** .
 Configuration parameter **nics** must be List of - Dictionary with keys of (OneOf bridge, name, ip, vlan, mac, link, mode, network)
 
 ## TODO
