@@ -74,40 +74,39 @@ provider-specific configuration for this provider.
 
 This provider exposes quite a few provider-specific configuration options:
 ### Required Parameters
-* `rapi_user` - The username for accessing the RAPI. REQUIRED
-* `rapi_pass` - The password for the corrensponding user. REQUIRED
-* `cluster` - The host address of the master Ganeti Node. REQUIRED
-* `instance_name` - The name of the instance. REQUIRED
+* `rapi_user` - The username for accessing the RAPI. 
+* `rapi_pass` - The password for the corrensponding user. 
+* `cluster` - The host address of the master Ganeti Node. 
+* `instance_name` - The name of the instance. 
 
 ### Optional Parameters
-* `os_type` - The OS that needs to be booted up. **Note :** This will override the default box . OPTIONAL
-* `mode` - Mode of creation. Defaults to create. OPTIONAL
-* `pnode` - The primary node where instance needs to be created. Defaults to None. OPTIONAL
-* `snode` - The Secondary node in case of drbd is used. Defaults to None. OPTIONAL
-* `nics` - Network configuration. OPTIONAL
+* `os_type` - The OS that needs to be booted up. **Note :** This will override the default box . 
+* `mode` - Mode of creation. Defaults to create. 
+* `pnode` - The primary node where instance needs to be created. Defaults to None. 
+* `snode` - The Secondary node in case of drbd is used. Defaults to None. 
+* `nics` - Network configuration. 
     * List of (Dictionary with keys of (OneOf bridge, name, ip, vlan, mac, link, mode, network) and values of (None or String)
-* `disks` - The Size of the Disks . Defaults to 8 G . OPTIONAL
+* `disks` - The Size of the Disks . Defaults to 8 G . 
     * List of (Dictionary with keys of (OneOf name, vg, adopt, spindles, mode, provider, metavg, size) and values of (NonEmptyString or Integer)
-* `disk_template` - The type of the disk template. Defaults to plain . OPTIONAL
-* `iallocator` - The name of the iallocator policy. Defaults to cluster default . OPTIONAL
-* `memory` - The size of the memory. Defaults to plain . OPTIONAL
-* `vcpus` - The No of VCPUS . Defaults to None . OPTIONAL
-* `ip_check` - Either 'true' or 'false' (Without quotes). Defaults to true . OPTIONAL
-* `name_check` - Either 'true' or 'false' (Without quotes) . Defaults to true . OPTIONAL
-
+* `disk_template` - The type of the disk template. Defaults to plain . 
+* `iallocator` - The name of the iallocator policy. Defaults to cluster default . 
+* `memory` - The size of the memory. Defaults to plain . 
+* `vcpus` - The No of VCPUS . Defaults to None . 
+* `ip_check` - Either 'true' or 'false' (Without quotes). Defaults to true . 
+* `name_check` - Either 'true' or 'false' (Without quotes) . Defaults to true . 
 
 ####hvparams settings
-* `boot_order` - Defaults to None . OPTIONAL
-* `cdrom_image_path` - Defaults to None . OPTIONAL
-* `nic_type` - Defaults to None . OPTIONAL
-* `disk_type` - Defaults to None . OPTIONAL
-* `cpu_type` - Defaults to None . OPTIONAL
-* `kernel_path` - Defaults to None . OPTIONAL
-* `kernel_args` - Defaults to None . OPTIONAL
-* `initrd_path` - Defaults to None . OPTIONAL
-* `root_path` - Defaults to None . OPTIONAL
-* `serial_console` - Defaults to None . OPTIONAL
-* `kvm_flag` - Defaults to None . OPTIONAL
+* `boot_order` - Defaults to None . 
+* `cdrom_image_path` - Defaults to None . 
+* `nic_type` - Defaults to None . 
+* `disk_type` - Defaults to None . 
+* `cpu_type` - Defaults to None . 
+* `kernel_path` - Defaults to None . 
+* `kernel_args` - Defaults to None . 
+* `initrd_path` - Defaults to None . 
+* `root_path` - Defaults to None . 
+* `serial_console` - Defaults to None . 
+* `kvm_flag` - Defaults to None . 
 
 
 ## Networks
