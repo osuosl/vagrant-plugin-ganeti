@@ -106,7 +106,7 @@ module VagrantPlugins
 		      # response = http.send_request("GET",url)
 		   rescue => e
 		        puts "Error sending request"
-			puts "#{e.message}"
+	#		puts "#{e.message}"
 			       
 		    else
 		        case response
