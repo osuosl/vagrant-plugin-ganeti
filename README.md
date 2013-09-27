@@ -40,7 +40,6 @@ And then make a Vagrantfile that looks like the following, filling in your infor
         ganeti.cluster = "https://10.10.10.10:5080/"
         ganeti.os_type = "image+debian-squeeze"
         ganeti.instance_name = "gimager3.organisation.org"
-        ganeti.pnode = "gnode.organisation.org"
         ganeti.disks =[{"size"=>"8000"}] 
         ganeti.disk_template = "plain"
         override.ssh.username = "root"
